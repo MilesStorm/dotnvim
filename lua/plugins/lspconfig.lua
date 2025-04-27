@@ -25,10 +25,16 @@ function M.config()
       map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
       -- code action
-      map("<leader>la", vim.lsp.buf.code_action, "[L]sp code [a]ction", { "n", "x" })
+      map("<leader>la", require("actions-preview").code_actions, "[L]sp code [a]ction", { "n", "x" })
 
       -- find referencme
       map("<leader>lr", require("telescope.builtin").lsp_reference, "[L]sp find [r]efference")
+
+      -- show diagnostic under cursor
+      map("<leader>ld", vim.diagnostic.open_float, "[L]sp [D]iagnostic under cursor")
+
+      -- show diagnostic in workspace
+      map("<leader>lwd", require("telescope.builtin").diagnostics, "[L]sp [W]orkspace [D]iagnostic")
 
       -- jump to implementation
       map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [i]mplementation")

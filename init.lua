@@ -77,9 +77,6 @@ vim.opt.confirm = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -114,5 +111,6 @@ spec "plugins.debug"
 spec "plugins.lint"
 spec "plugins.todo"
 spec "plugins.rust"
+spec "plugins.picker"
 spec "plugins.tokyo"
 require "plugins.lazy"
