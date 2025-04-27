@@ -41,7 +41,7 @@ local M = {
       desc = "Debug: Step out",
     },
     {
-      "<leader>b",
+      "<leader>db",
       function()
         require("dap").toggle_breakpoint()
       end,
