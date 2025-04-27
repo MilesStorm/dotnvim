@@ -128,7 +128,7 @@ function M.config()
           [vim.diagnostic.severity.INFO] = diagnostic.message,
           [vim.diagnostic.severity.HINT] = diagnostic.message,
         }
-        return diagnostic_message[diagnostic.serverity]
+        return diagnostic_message[diagnostic.severity]
       end,
     },
   }
@@ -151,7 +151,6 @@ function M.config()
   local servers = {
     clangd = {},
     pyright = {},
-    rust_analyzer = {},
     lua_ls = {
       -- cmd = { ... }
       -- filetypes = { ... }
@@ -183,6 +182,9 @@ function M.config()
     automatic_installation = false,
     handlers = {
       function(server_name)
+        if server_name == "rust_analyzer" then
+          return
+        end
         local server = servers[server_name] or {}
         -- This handles overriding only values explicitly pased
         -- by the server configuration above. Useful when disabling

@@ -22,5 +22,6 @@ require("lazy").setup {
     enabled = true,
     notify = false,
   },
+  build = "cargo build --release",
   "tpope/vim-sleuth", -- detect tabstop and shiftwidth automatically
 }
