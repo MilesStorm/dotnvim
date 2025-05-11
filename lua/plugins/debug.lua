@@ -113,6 +113,13 @@ function M.config()
   dap.listeners.before.event_terminated["dapui_config"] = dapui.close
   dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
+  local sysname = vim.loop.os_uname().sysname
+  local HOME = os.getenv "HOME" .. "/"
+  local mason = HOME .. ".local/share/nvim/mason/packages/"
+  local codelldb_path = mason .. "codelldb/extensions/adapter/codelldb"
+  local liblldb_path = mason .. "codelldb/extension/lldb/lib/liblldb.so"
+  liblldb_path = liblldb_path .. (sysname == "Linux" and ".so" or ".dylib")
+
   -- Install golang specific config
   require("dap-go").setup {
     delve = {
@@ -120,6 +127,10 @@ function M.config()
       -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
       detached = vim.fn.has "win32" == 0,
     },
+  }
+
+  require("rustaceanvim.config").dap = {
+    adapter = require("rustaceanvim.config").get_codelldb_adapter(codelldb_path, liblldb_path),
   }
 end
 return M

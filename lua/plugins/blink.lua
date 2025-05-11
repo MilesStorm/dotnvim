@@ -30,7 +30,7 @@ local M = {
 function M.config()
   require("blink.cmp").setup {
     keymap = {
-      preset = "super-tab",
+      preset = "enter",
     },
     appearance = {
       nerd_font_variant = "normal",
